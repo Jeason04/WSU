@@ -1,0 +1,23 @@
+def sum_of_integers(input_string):
+    integers = input_string.split()
+    total_sum = 0
+    for num_str in integers:
+        try:
+            num = int(num_str)
+            total_sum += num
+        except ValueError:
+            print("Must enter integers separated by spaces")
+            return None
+    return total_sum
+
+
+if __name__ == '__main__':
+    while True:
+        user_input = input(
+            "Enter integers separated by spaces (type 'done' to exit) ==> ")
+        if user_input == 'done':
+            print("Program terminated. Good bye!")
+            break
+        total_sum = sum_of_integers(user_input)
+        if total_sum is not None:
+            print("The sum of the input integers is ==>", total_sum)

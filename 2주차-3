@@ -1,0 +1,26 @@
+def extract_emails(text):
+    words = text.split()
+    emails = []
+
+    for word in words:
+        if "@" in word:
+            parts = word.split("@")
+            if len(parts) == 2:
+                id_part, host_part = parts
+                if id_part.isalnum() or all(char in "-_" for char in id_part):
+                    if host_part.isalnum() or all(char == "-" for char in host_part):
+                        emails.append(word)
+
+    return emails
+
+
+if __name__ == '__main__':
+    input_text = input("텍스트를 입력하세요: ")
+    email_list = extract_emails(input_text)
+
+    if email_list:
+        print("추출된 이메일 주소:")
+        for email in email_list:
+            print(email)
+    else:
+        print("이메일 주소가 발견되지 않았습니다.")

@@ -1,0 +1,11 @@
+def rev_str(s):
+    reversed_str = ""
+    for char in s:
+        reversed_str = char + reversed_str
+    return reversed_str
+
+
+if __name__ == '__main__':
+    print(rev_str('ABCDE'))
+    print(rev_str('Come again, Forever young!'))
+    print(rev_str('Amore, Roma'))
