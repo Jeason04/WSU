@@ -1,0 +1,37 @@
+from tkinter import *
+
+
+def add_task():
+    task_input = entry.get()
+    if task_input:
+        listbox.insert(END, task_input)
+        entry.delete(0, END)
+
+
+def delete_task():
+    try:
+        selected_task = listbox.curselection()
+        listbox.delete(selected_task)
+    except:
+        pass
+
+
+root = Tk()
+root.title("To-Do List")
+
+frame = Frame(root)
+frame.pack(pady=10)
+
+entry = Entry(frame, width=20)
+entry.grid(row=0, column=0)
+
+add_button = Button(frame, text="Add Task", width=15, command=add_task)
+add_button.grid(row=1, column=0, pady=10)
+
+listbox = Listbox(root, width=20)
+listbox.pack()
+
+delete_button = Button(root, text="Delete Task", width=15, command=delete_task)
+delete_button.pack(pady=10)
+
+root.mainloop()
