@@ -1,0 +1,23 @@
+from collections import Counter
+
+
+def get_word(fname):
+    with open(fname, 'r') as f:
+        text = f.read().lower().split()
+        return Counter(text)
+
+
+def compare_word(fname1, fname2):
+    frequencies1 = get_word(fname1)
+    frequencies2 = get_word(fname2)
+
+    common_words = frequencies1.keys() & frequencies2.keys()
+
+    for word in common_words:
+        print(
+            f"'{word}': {fname1} - {frequencies1[word]}, {fname2} - {frequencies2[word]}")
+
+
+fname1 = "file1.txt"
+fname2 = "file2.txt"
+compare_word(fname1, fname2)
