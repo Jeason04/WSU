@@ -1,0 +1,17 @@
+from collections import deque
+
+
+def stock_func(prices):
+    result = []
+    prices_queue = deque(prices)
+
+    while prices_queue:
+        now_price = prices_queue.popleft()
+        not_dropped = sum(now_price <= p for p in prices_queue)
+        result.append(not_dropped)
+
+    return result
+
+
+prices = [1000, 2000, 3000, 2000, 3000]
+print("prices:", prices, "result:", stock_func(prices))
