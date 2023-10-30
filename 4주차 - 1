@@ -1,0 +1,37 @@
+from tkinter import *
+
+fnameList = ["dog.gif", "cat.gif", "rabbit.gif"]
+
+
+def show_photo():
+    num = chk.get()
+    photo = PhotoImage(
+        file="/Users/iwonseog/Documents/2학기/jpeg파일/" + fnameList[num])
+    pLabel.configure(image=photo)
+    pLabel.image = photo
+
+
+window = Tk()
+window.title("좋아하는 동물 투표")
+window.geometry("400x450")
+
+label = Label(window, text="좋아하는 동물 투표", font=("궁서체", 30), fg="blue")
+label.pack()
+
+chk = IntVar()
+
+rb1 = Radiobutton(window, text="강아지", variable=chk, value=0)
+rb2 = Radiobutton(window, text="고양이", variable=chk, value=1)
+rb3 = Radiobutton(window, text="토끼", variable=chk, value=2)
+
+rb1.pack()
+rb2.pack()
+rb3.pack()
+
+showButton = Button(window, text="사진 보기", command=show_photo)
+showButton.pack()
+
+pLabel = Label(window)
+pLabel.pack()
+
+window.mainloop()
